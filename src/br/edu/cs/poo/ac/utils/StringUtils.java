@@ -95,4 +95,15 @@ public static boolean telefoneValido(String tel) {
 	
 	
 }
+
+public static boolean tamanhoMenor(String str, int tamanho) {
+	if (tamanho <= 0) {
+		return false;
+	}
+	if (str == null) {
+		return true;
+	}
+	return str.length() < tamanho;
+}
+
 }
