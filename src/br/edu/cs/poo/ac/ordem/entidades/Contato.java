@@ -33,5 +33,3 @@ public class Contato implements Serializable {
 		this.ehZap = ehZap;
 	}
 }
-
-//teste de commit
