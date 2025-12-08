@@ -4,4 +4,4 @@ import java.io.Serializable;
 
 public interface Registro extends Serializable {
     String getId();
-}
+} 
