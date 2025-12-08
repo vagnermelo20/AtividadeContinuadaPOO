@@ -80,7 +80,7 @@ public static boolean telefoneValido(String tel) {
 		return false;
 	}
 	
-	if (tel.length() != 12 && tel.length() != 13) {
+	if (tel.length() != 12 && tel.length() != 13 && tel.length() != 14) {
 		
 		return false;
 	}
