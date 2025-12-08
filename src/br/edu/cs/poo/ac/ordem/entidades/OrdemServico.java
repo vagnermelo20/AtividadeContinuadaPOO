@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import br.edu.cs.poo.ac.utils.Registro;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class OrdemServico implements Serializable {
+public class OrdemServico implements Registro {
 
 	private Cliente cliente;
 	private PrecoBase precoBase;
@@ -49,6 +51,10 @@ public class OrdemServico implements Serializable {
 		}
 
 		return concatenacao;
+	}
+	public String getId() {
+		
+		return getNumero();
 	}
 
 }
