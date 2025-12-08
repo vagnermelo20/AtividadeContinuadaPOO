@@ -1,61 +1,37 @@
 package br.edu.cs.poo.ac.ordem.daos;
 
-import java.io.Serializable;
-
 import br.edu.cs.poo.ac.ordem.entidades.FechamentoOrdemServico;
+import br.edu.cs.poo.ac.utils.Registro;
 
-//O identificador único, por objeto, de FechamentoOrdemServico é o número.   
-public class FechamentoOrdemServicoDAO extends DAOGenerico{
+//O identificador único, por objeto, de FechamentoOrdemServico
+//é o número da ordem de serviço.
+public class FechamentoOrdemServicoDAO extends DAOGenerico {
+	public Class<FechamentoOrdemServico> getClasseEntidade() {
+	    return FechamentoOrdemServico.class;
+	}
 
-	public FechamentoOrdemServicoDAO(){
-		
-		super(FechamentoOrdemServico.class);
+	public FechamentoOrdemServico buscar(String id) {
+		return (FechamentoOrdemServico) super.buscar(id);
 	}
-	
-	
-	public FechamentoOrdemServico buscar (String numero) {
-		
-		return (FechamentoOrdemServico) cadastroObjetos.buscar(numero);
+
+	public boolean incluir(FechamentoOrdemServico ordem) {
+		return super.incluir(ordem);
 	}
-	
-	public boolean incluir(FechamentoOrdemServico fechamentoOrdemServico) {
-		if (buscar(fechamentoOrdemServico.getNumeroOrdemServico()) == null) {
-			cadastroObjetos.incluir(fechamentoOrdemServico, fechamentoOrdemServico.getNumeroOrdemServico());
-			return true;
-		} else {
-			return false;
-		}
+
+	public boolean alterar(FechamentoOrdemServico ordem) {
+		return super.alterar(ordem);
 	}
-	
-	public boolean alterar(FechamentoOrdemServico fechamentoOrdemServico) {
-		if (buscar(fechamentoOrdemServico.getNumeroOrdemServico()) != null) {
-			cadastroObjetos.alterar(fechamentoOrdemServico, fechamentoOrdemServico.getNumeroOrdemServico());
-			return true;
-		} else {
-			return false;
-		}
-	}
-		
-	public boolean excluir(String numero) {
-		if (buscar(numero) != null) {
-			cadastroObjetos.excluir(numero);
-			return true;
-		} else {
-			return false;
-		}
+
+	public boolean excluir(String id) {
+		return super.excluir(id);
 	}
 
 	public FechamentoOrdemServico[] buscarTodos() {
-		Serializable[] ret = cadastroObjetos.buscarTodos();
-		FechamentoOrdemServico[] retorno;
-		if (ret != null && ret.length > 0) {
-			retorno = new FechamentoOrdemServico[ret.length];
-			for (int i = 0; i < ret.length; i++) {
-				retorno[i] = (FechamentoOrdemServico) ret[i];
-			}
-		} else {
-			retorno = new FechamentoOrdemServico[0];
+		Registro registros[] = super.buscarTodos();
+		FechamentoOrdemServico ordens[] = new FechamentoOrdemServico[registros.length];
+		for(int i = 0; i < registros.length; i++) {
+			ordens[i] = (FechamentoOrdemServico)registros[i];
 		}
-		return retorno;
+		return ordens;
 	}
-}	
+}
