@@ -7,22 +7,17 @@ public abstract class DAOGenerico {
 
 	protected CadastroObjetos cadastroObjetos;
 
-	// Método abstrato para obter a classe na filha
 	public abstract Class<?> getClasseEntidade();
 
-	// Construtor sem parâmetros que usa o método abstrato
 	public DAOGenerico() {
 		this.cadastroObjetos = new CadastroObjetos(getClasseEntidade());
 	}
 
-	// Método de busca auxiliar usado nas validações
 	public Registro buscar(String id) {
 		return (Registro) cadastroObjetos.buscar(id);
 	}
 
 	public boolean incluir(Registro registro) {
-		// Lógica trazida do exemplo:
-		// Se buscar retornar algo diferente de null, já existe. Não inclui.
 		if (buscar(registro.getId()) == null) {
 			cadastroObjetos.incluir(registro, registro.getId());
 			return true;
@@ -32,8 +27,6 @@ public abstract class DAOGenerico {
 	}
 
 	public boolean alterar(Registro registro) {
-		// Lógica trazida do exemplo:
-		// Se buscar retornar null, não existe. Não altera.
 		if (buscar(registro.getId()) != null) {
 			cadastroObjetos.alterar(registro, registro.getId());
 			return true;
@@ -43,8 +36,7 @@ public abstract class DAOGenerico {
 	}
 
 	public boolean excluir(String id) {
-		// Lógica trazida do exemplo:
-		// Se buscar retornar null, não existe. Não exclui.
+
 		if (buscar(id) != null) {
 			cadastroObjetos.excluir(id);
 			return true;
